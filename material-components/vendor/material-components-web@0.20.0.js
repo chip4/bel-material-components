@@ -12682,5 +12682,4 @@ export const {
   textfield,
   toolbar
 } = mdc;
-console.log('mdc',mdc);
 export default mdc;

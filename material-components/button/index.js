@@ -1,5 +1,5 @@
 import 'https://wzrd.in/standalone/bel@latest';
-import { ripple } from './vendor/material-components-web.js';
+import { ripple } from '../vendor/material-components-web.js';
 
 console.log("ripple",ripple);
 
