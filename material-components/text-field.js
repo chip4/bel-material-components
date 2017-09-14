@@ -1,5 +1,5 @@
-import '../vendor/bel@5.1.1.js';
-import { textfield } from '../vendor/material-components-web@0.20.0.js';
+import './vendor/bel@5.1.1.js';
+import { textfield } from './vendor/material-components-web@0.20.0.js';
 
 function rootClasses({ disabled, value, label, multiline, fullWidth, box }){
   const modifiers = [];

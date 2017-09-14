@@ -1,5 +1,5 @@
 import yo from '../externals/yo-yo.js';
-import button, { raisedButton, buttonFactory, modifiers } from '../../../material-components/button/index.js';
+import button, { raisedButton, buttonFactory, modifiers } from '../../../material-components/button.js';
 
 export default () => {
   return yo`

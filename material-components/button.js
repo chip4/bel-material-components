@@ -1,5 +1,5 @@
-import '../vendor/bel@5.1.1.js';
-import { ripple } from '../vendor/material-components-web@0.20.0.js';
+import './vendor/bel@5.1.1.js';
+import { ripple } from './vendor/material-components-web@0.20.0.js';
 
 export const modifiers = {
   raised: 'raised', // a contained button that is elevated upon the surface.
