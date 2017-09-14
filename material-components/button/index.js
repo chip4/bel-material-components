@@ -1,6 +1,14 @@
 import '../vendor/bel@5.1.1.js';
 import { ripple } from '../vendor/material-components-web@0.20.0.js';
 
+export const modifiers = {
+  raised: 'raised', // a contained button that is elevated upon the surface.
+  unelevated: 'unelevated', // a contained button that is flush with the surface.
+  stroked: 'stroked', // adds border
+  dense: 'dense', // compresses the button text to make it slightly smaller.
+  compact: 'compact', // reduces the amount of horizontal padding in the button.
+};
+
 /**
  * Button Factory
  *
@@ -24,5 +32,6 @@ export function buttonFactory(modifiers=[]) {
     return el;
   };
 }
-export const raisedButton = buttonFactory(['raised']);
+
+export const raisedButton = buttonFactory([modifiers.raised]);
 export default buttonFactory();

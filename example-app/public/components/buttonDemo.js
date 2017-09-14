@@ -1,5 +1,5 @@
 import yo from '../externals/yo-yo.js';
-import button, { raisedButton, buttonFactory } from '../../../material-components/button/index.js';
+import button, { raisedButton, buttonFactory, modifiers } from '../../../material-components/button/index.js';
 
 export default () => {
   return yo`
@@ -7,7 +7,7 @@ export default () => {
       ${button(yo`<i>Flat Button</i>`)}
       ${raisedButton('Raised Button')}
       ${button({ onclick: (event) => console.log(event) },'On Click')}
-      ${buttonFactory(['compact', 'dense'])('Compact and Dense')}
+      ${buttonFactory([modifiers.compact, modifiers.dense ])('Compact and Dense')}
     </div>
   `;
 };
