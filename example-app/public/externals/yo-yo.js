@@ -1,2 +1,2 @@
-import 'https://wzrd.in/standalone/yo-yo@latest';
-export default yoYo;
+import '../../../material-components/vendor/bel@5.1.1.js';
+export default bel;
