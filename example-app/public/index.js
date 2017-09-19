@@ -4,6 +4,7 @@ import buttonDemo from './components/buttonDemo.js';
 import textFieldDemo from './components/textFieldDemo.js';
 import elevationDemo from './components/elevationDemo.js';
 import iconDemo from './components/iconDemo.js';
+import fabDemo from './components/fabDemo.js';
 import { elevationMixin } from '../../material-components/elevation.js';
 
 const paper = styled.div`
@@ -15,6 +16,7 @@ const paper = styled.div`
 const root = (state = {} , dispatch) => {
   return yo`
     <div>
+      ${paper(fabDemo())}
       ${paper(iconDemo())}
       ${paper(buttonDemo())}
       ${paper(textFieldDemo())}
