@@ -5,7 +5,15 @@ import textFieldDemo from './components/textFieldDemo.js';
 import elevationDemo from './components/elevationDemo.js';
 import iconDemo from './components/iconDemo.js';
 import fabDemo from './components/fabDemo.js';
+import toolbarDemo from './components/toolbarDemo.js';
 import { elevationMixin } from '../../material-components/elevation.js';
+
+// Toolbars explode when this is removed https://jsbin.com/diqifanice/edit?html,output
+injectGlobal`
+.mdc-toolbar__section {
+  height: auto;
+}
+`;
 
 const paper = styled.div`
   ${elevationMixin(2)}
@@ -16,6 +24,7 @@ const paper = styled.div`
 const root = (state = {} , dispatch) => {
   return yo`
     <div>
+      ${paper(toolbarDemo())}
       ${paper(fabDemo())}
       ${paper(iconDemo())}
       ${paper(buttonDemo())}
