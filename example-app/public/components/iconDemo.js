@@ -4,6 +4,6 @@ import icon from '../../../material-components/icon.js';
 
 export default () => yo`
     <div>
-      ${Array.from(new Array(20), () => icon('face'))}
+      ${Array.from(new Array(20), () => icon()('face'))}
     </div>
   `;

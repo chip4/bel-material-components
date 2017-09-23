@@ -1,7 +1,6 @@
-import bel from './externals/bel.js';
+import { standardElem } from './utils/helpers.js';
 
-export default (iconName) => {
-  return bel`
-    <i class="material-icons">${iconName}</i>
-  `;
-};
+export default standardElem({
+  tag: 'i',
+  baseClass: 'material-icons'
+})

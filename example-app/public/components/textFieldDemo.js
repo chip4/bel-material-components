@@ -20,7 +20,7 @@ export default () => {
       ${textField({
         label: 'Multiline',
         placeholder: 'Here is some placeholder text',
-        multiline: { rows: 8, columns: 40 },
+        multiline: { rows: 8, cols: 40 },
       })}
       ${textField({
         label: 'FullWidth',

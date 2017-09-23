@@ -1,56 +1,43 @@
-import './vendor/bel@5.1.1.js';
 import { textfield } from './vendor/material-components-web@0.20.0.js';
-
-function rootClasses({ disabled, value, label, multiline, fullWidth, box }){
-  const modifiers = [];
-  if(disabled){
-    modifiers.push('disabled');
-  }
-  if(value && label){ //TODO 0 should be true
-    modifiers.push('upgraded')
-  }
-  if(multiline){
-    modifiers.push('multiline')
-  }
-  if(fullWidth){
-    modifiers.push('fullwidth')
-  }
-  if(box){
-    modifiers.push('box')
-  }
-  return modifiers.map((mod) => `mdc-textfield--${mod}`).join(' ');
-}
+import { standardElem } from './utils/helpers.js';
 
 function labelEl({ label, value, placeholder }) {
-  return (!label) ? '' : bel`
-    <span class="mdc-textfield__label ${value || placeholder ? 'mdc-textfield__label--float-above' : ''}">${label}</span>
-  `;
+  return (!label) ? '' : standardElem({
+    tag: 'span',
+    baseClass: "mdc-textfield__label",
+    modifiers: [
+      'floatAbove',
+    ],
+  })({
+    floatAbove: value || placeholder,
+  })(label);
 }
 
-function inputEl({ disabled, value='', multiline, placeholder='', oninput }) {
-  const disabledAttr = disabled ? 'disabled':'';
+function inputEl({ multiline, ...props }) {
   if(multiline){
-    return bel`
-      <textarea class="mdc-textfield__input"
-        rows=${multiline.rows}
-        cols=${multiline.columns}
-        placeholder=${placeholder}
-        >
-        ${value}
-      </textarea>
-    `;
+    return standardElem({
+      tag: 'textarea',
+      baseClass: 'mdc-textfield__input',
+    })(Object.assign(props, multiline))(props.value);
   } else {
-    return bel`
-      <input type="text"
-        class="mdc-textfield__input"
-        placeholder=${placeholder}
-        value=${value}
-        oninput=${oninput}
-        ${disabledAttr}
-      />
-    `;
+    return standardElem({
+      tag: 'input',
+      baseClass: 'mdc-textfield__input',
+    })(props)();
   }
 }
+
+const labelWrap = standardElem({
+  tag: 'label',
+  baseClass: 'mdc-textfield',
+  modifiers: [
+    'disabled',
+    'upgraded',
+    'multiline',
+    'fullwidth',
+    'box',
+  ],
+});
 
 /**
  * TextField
@@ -73,13 +60,11 @@ function inputEl({ disabled, value='', multiline, placeholder='', oninput }) {
  */
 export default (props={}) => {
   const modifiers = [];
-  const el = bel`
-    <label class="mdc-textfield ${rootClasses(props)}">
-      ${inputEl(props)}
-      ${labelEl(props)}
-      ${props.box ? bel`<div class="mdc-textfield__bottom-line"></div>` : ''}
-    </label>
-  `;
+  const el = labelWrap(props)(
+    inputEl(props),
+    labelEl(props),
+    props.box ? bel`<div class="mdc-textfield__bottom-line"></div>` : '',
+  );
   textfield.MDCTextfield.attachTo(el);
   return el;
 };
