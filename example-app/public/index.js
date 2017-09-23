@@ -7,6 +7,7 @@ import iconDemo from './components/iconDemo.js';
 import fabDemo from './components/fabDemo.js';
 import toolbarDemo from './components/toolbarDemo.js';
 import { elevationMixin } from '../../material-components/elevation.js';
+import toolbar, { toolbarIconAnchor, toolbarTitle } from '../../material-components/toolbar.js';
 
 // Toolbars explode when this is removed https://jsbin.com/diqifanice/edit?html,output
 injectGlobal`
@@ -15,21 +16,27 @@ injectGlobal`
 }
 `;
 
-const paper = styled.div`
+const paper = (title) => (...children) => styled(bel`
+  <div>
+    ${styled(toolbar()(
+      toolbarTitle()(title),
+    ))`background-color: #888;`}
+    ${styled.div`padding: 1em;`(children)}
+  </div>
+`)`
   ${elevationMixin(2)}
-  padding: 1em;
-  margin: 1em;
+  margin: 2em;
 `;
 
 const root = (state = {} , dispatch) => {
   return yo`
     <div>
-      ${paper(toolbarDemo())}
-      ${paper(fabDemo())}
-      ${paper(iconDemo())}
-      ${paper(buttonDemo())}
-      ${paper(textFieldDemo())}
-      ${paper(elevationDemo())}
+      ${paper('Toolbar')(toolbarDemo())}
+      ${paper('Floating Action Button')(fabDemo())}
+      ${paper('Icon')(iconDemo())}
+      ${paper('Button')(buttonDemo())}
+      ${paper('TextField')(textFieldDemo())}
+      ${paper('Elevation')(elevationDemo())}
     </div>
   `;
 };

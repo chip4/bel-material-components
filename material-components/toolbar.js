@@ -1,8 +1,8 @@
-import bel from './externals/bel.js';
+import bel, { createElement } from './externals/bel.js';
 import { createModifyingClasses } from './utils/helpers.js';
 
-export const toolbar = (props={}) => (...children) => bel`
-  <header class="mdc-toolbar" ${props}>
+export const toolbar = ({ className, ...props}={}) => (...children) => bel`
+  <header class="mdc-toolbar ${className}" ${props}>
     ${children}
   </header>
 `;
@@ -13,7 +13,7 @@ export const toolbarRow = (props={}) => (...children) => bel`
   </div>
 `;
 
-export const toolbarSection = ({ alignStart=true, alignEnd, shrinkToFit, ...props }={}) => (...children) => {
+export const toolbarSection = ({ alignStart, alignEnd, shrinkToFit, ...props }={}) => (...children) => {
   const extraClasses = createModifyingClasses('mdc-toolbar__section', {
     alignStart,
     alignEnd,
@@ -27,15 +27,27 @@ export const toolbarSection = ({ alignStart=true, alignEnd, shrinkToFit, ...prop
   `;
 }
 
-export const toolbarIconAnchor = ({ menu, ...props }={}) => (iconName) => {
+const toolbarIcon = (tag) => ({ menu, ...props }={}) => (...children) => {
   const extraClasses = createModifyingClasses('mdc-toolbar__icon', {
     menu,
   });
-  return bel`
-    <a class="material-icons mdc-toolbar__icon--menu ${extraClasses}" ${props}>${iconName}</a>
-  `;
+  return createElement(tag, Object.assign(props, {
+    className: `material-icons mdc-toolbar__icon ${extraClasses}`,
+  }), children);
 }
+
+export const toolbarIconAnchor = toolbarIcon('a');
+export const toolbarIconButton = toolbarIcon('button');
+export const toolbarIconSpan = toolbarIcon('span');
 
 export const toolbarTitle = (props={}) => (...children) => bel`
   <span class="mdc-toolbar__title">${children}</span>
 `;
+
+export default (props={}) => (...children) => toolbar(props)(
+  toolbarRow()(
+    toolbarSection({alignStart: true})(
+      ...children
+    )
+  ),
+);
