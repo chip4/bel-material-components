@@ -1,6 +1,6 @@
 import yo from '../externals/yo-yo.js';
 import styled from '../externals/styled-elements.js';
-import withElevation, { elevationMixin, elevationTransitionMixin } from '../../../material-components/elevation.js';
+import withElevation, { elevationMixin, elevationTransitionMixin } from '../../../elevation.js';
 
 const paper = (...children) => withElevation(8)(bel`<div>${children}</div>`);
 

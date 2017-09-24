@@ -6,8 +6,8 @@ import elevationDemo from './components/elevationDemo.js';
 import iconDemo from './components/iconDemo.js';
 import fabDemo from './components/fabDemo.js';
 import toolbarDemo from './components/toolbarDemo.js';
-import { elevationMixin } from '../../material-components/elevation.js';
-import toolbar, { toolbarIconAnchor, toolbarTitle } from '../../material-components/toolbar.js';
+import { elevationMixin } from '../../elevation.js';
+import toolbar, { toolbarIconAnchor, toolbarTitle } from '../../toolbar.js';
 
 // Toolbars explode when this is removed https://jsbin.com/diqifanice/edit?html,output
 injectGlobal`
