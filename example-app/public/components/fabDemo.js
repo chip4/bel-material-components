@@ -1,6 +1,6 @@
 import yo from '../externals/yo-yo.js';
 import styled from '../externals/styled-elements.js';
-import fab from '../../../fab.js';
+import fab from '../../../package/fab.js';
 
 const fob = styled(fab()('motorcycle'))`
   background-color: blue;

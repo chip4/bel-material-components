@@ -1,5 +1,5 @@
 import yo from '../externals/yo-yo.js';
-import textField from '../../../text-field.js';
+import textField from '../../../package/text-field.js';
 
 export default () => {
   return yo`

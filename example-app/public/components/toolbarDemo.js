@@ -8,8 +8,8 @@ import simpleToolbar, {
   toolbarIconSpan,
   toolbarIconButton,
   toolbarTitle
-} from '../../../toolbar.js';
-import { elevationMixin } from '../../../elevation.js';
+} from '../../../package/toolbar.js';
+import { elevationMixin } from '../../../package/elevation.js';
 
 const root = styled.div`
   & > * {

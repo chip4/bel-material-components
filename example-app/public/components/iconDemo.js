@@ -1,6 +1,6 @@
 import yo from '../externals/yo-yo.js';
 import styled from '../externals/styled-elements.js';
-import icon from '../../../icon.js';
+import icon from '../../../package/icon.js';
 
 export default () => yo`
     <div>
