@@ -1,8 +1,8 @@
 
 import yo from '../externals/yo-yo.js';
-import select, { option, optGroup } from '../../../package/select.js';
+import select, { option, optGroup, desktopSelect, desktopOptGroup, desktopOption } from '../../../package/select.js';
 
-const createOptions = () => [
+const createOptions = (option, optGroup) => [
   option({ value: ''})('Pick a Food'),
   option({ value: 'grains'})('Bread, Cereal, Rice, and Pasta'),
   optGroup({ label: 'Fruits' })(
@@ -18,8 +18,10 @@ const createOptions = () => [
 export default () => {
   return yo`
     <div>
-      ${select()(...createOptions())}
-      ${select({ disabled: true })(...createOptions())}
+      ${desktopSelect()(...createOptions(desktopOption, desktopOptGroup))}
+      ${desktopSelect({ disabled: true })(...createOptions(desktopOption, desktopOptGroup))}
+      ${select()(...createOptions(option, optGroup))}
+      ${select({ disabled: true })(...createOptions(option, optGroup))}
     </div>
   `;
 };

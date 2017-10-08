@@ -1,17 +1,21 @@
+// TODO combine desktopSelect and default select into one implementation
+// See: https://github.com/material-components/material-components-web/tree/master/packages/mdc-select
+// for requirements
+
 import { createElement } from './externals/bel.js';
 import { standardElem } from './utils/helpers.js';
 import { select } from './vendor/material-components-web@0.20.0.js';
 
-export const option = ({value, disabled=false, ...props}={}) => standardElem({
+export const desktopOption = ({value, disabled=false, ...props}={}) => standardElem({
   tag: 'li',
   baseClass: 'mdc-list-item',
 })({ ...props, id: value, ariaDisabled: disabled, role: 'option', tabindex: '0'});
 
-export const optGroup = ({ label, ...props }={}) => (...children) => standardElem({
+export const desktopOptGroup = ({ label, ...props }={}) => (...children) => standardElem({
   tag: 'ul',
   baseClass: 'mdc-list',
   className: 'mdc-simple-menu__items'
-})(props)(option({disabled: true})(label), ...children);
+})(props)(desktopOption({disabled: true})(label), ...children);
 
 const selectWrappingElem = ({ disabled=false, ...props}={}) => standardElem({
   tag: 'div',
@@ -26,14 +30,13 @@ const selectWrappingElem = ({ disabled=false, ...props}={}) => standardElem({
   },
 })({ ariaDisabled: disabled, role: 'listbox', tabindex: '0' });
 
-export default (props) => (...children) => selectWrappingElem(props)(
+export const desktopSelect = (props) => (...children) => selectWrappingElem(props)(
   createElement('span', { className: 'mdc-select__selected-text' }, ['Vegetables']),
   createElement('div', { className: 'mdc-simple-menu mdc-select__menu' }, [
-    optGroup()(children)
+    desktopOptGroup()(children)
   ]),
 );
 
-/* CSS-only component
 export const optGroup = standardElem({
   tag: 'optgroup',
 });
@@ -46,4 +49,3 @@ export default standardElem({
   tag: 'select',
   baseClass: 'mdc-select',
 });
-*/
