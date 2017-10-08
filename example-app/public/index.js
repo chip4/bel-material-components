@@ -6,6 +6,7 @@ import elevationDemo from './components/elevationDemo.js';
 import iconDemo from './components/iconDemo.js';
 import fabDemo from './components/fabDemo.js';
 import toolbarDemo from './components/toolbarDemo.js';
+import selectDemo from './components/selectDemo.js';
 import { elevationMixin } from '../../package/elevation.js';
 import toolbar, { toolbarIconAnchor, toolbarTitle } from '../../package/toolbar.js';
 
@@ -31,6 +32,7 @@ const paper = (title) => (...children) => styled(bel`
 const root = (state = {} , dispatch) => {
   return yo`
     <div>
+      ${paper('Select')(selectDemo())}
       ${paper('Toolbar')(toolbarDemo())}
       ${paper('Floating Action Button')(fabDemo())}
       ${paper('Icon')(iconDemo())}
